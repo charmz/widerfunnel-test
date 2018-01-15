@@ -182,6 +182,7 @@ cd resources
 npm i
 npm i vue-router --save-dev
 mkdir assets/components
+npm i vue-resource --save-dev
 ```
 
 add cors for testing with Postman
@@ -193,7 +194,15 @@ php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"
 composer require tymon/jwt-auth:dev-develop --prefer-source;
 ```
 
+Set HOST in webpack
+
 ```
+process.env.HOST
+```
+
+```
+php artisan make:controller UserController
+
 vim assets/components/App.vue
 ```
 

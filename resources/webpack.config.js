@@ -2,11 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './assets/js/app.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, '../public/js'),
+    publicPath: '/js/',
+    filename: 'app.js'
   },
   module: {
     rules: [
@@ -92,7 +92,8 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        HOST: '"http://34.212.29.155"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
