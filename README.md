@@ -157,19 +157,9 @@ DB_DATABASE=noter
 DB_USERNAME=root
 DB_PASSWORD=password
 ```
-
-create model with (m)igration and (c)ontroller flags:
-
 ```
-cd /var/www/html
-
-php migrate
-
-php artisan make:model Note -mc
+sudo chmod -R 777 /var/www
 ```
-
-Install node and Vue
-
 
 ```
 cd ~
@@ -180,65 +170,27 @@ sudo apt-get install build-essential
 
 ```
 
-Now we edit the model
-
 ```
-vim /var/www/html/app/Note.php
-```
-
-to:
-
-```
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Task extends Model
-{
-    use SoftDeletes;
-    protected $guarded = [];
-    protected $dates = ['deleted_at'];
-}
-
-```
-
-The migration
-
-```
-vim /database/migration/[timestamp]_notes_table.php
-```
-
-```
-public function up()
-{
-    Schema::create('notes', function (Blueprint $table) {
-        $table->increments('id');
-        $table->text('body');
-        $table->softDeletes();
-        $table->timestamps();
-    });
-}
-```
-
-```
+cd /var/www/html
 php artisan migrate
 ```
 
-
-
-
-
-
-HERE WE NEED TO LOOK AT AUTH
-
 ```
-npm install -g vue-cli
+sudo npm install -g vue-cli
 vue init webpack-simple resources
 cd resources
 npm i
 npm i vue-router --save-dev
 mkdir assets/components
+```
+
+add cors for testing with Postman
+
+```
+composer require barryvdh/laravel-cors
+composer update
+php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"
+composer require tymon/jwt-auth:dev-develop --prefer-source;
 ```
 
 ```
@@ -387,6 +339,54 @@ vim assets/components/Dashboard.vue
 <template>
     <h1>Laravel 5 - Dashboard</h1>
 </template>
+```
+```
+php artisan make:model Note -mc
+```
+
+Install node and Vue
+
+
+
+Now we edit the model
+
+```
+vim /var/www/html/app/Note.php
+```
+
+to:
+
+```
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Task extends Model
+{
+    use SoftDeletes;
+    protected $guarded = [];
+    protected $dates = ['deleted_at'];
+}
+
+```
+
+The migration
+
+```
+vim /database/migration/[timestamp]_notes_table.php
+```
+
+```
+public function up()
+{
+    Schema::create('notes', function (Blueprint $table) {
+        $table->increments('id');
+        $table->text('body');
+        $table->softDeletes();
+        $table->timestamps();
+    });
+}
 ```
 
 ```

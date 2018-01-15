@@ -13,6 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['api','cors']], function () {
+    Route::post('auth/register', 'Auth\ApiRegisterController@create');
+    Route::post('auth/login', 'Auth\ApiAuthController@login');
+
+	Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::get('/user', [
+            'uses' => 'UserController@index',
+        ]);
+    });
+
+	Route::post('create_note', 'NoteController@store');
+	Route::post('delete_note/{id}', 'NoteController@destroy');
+	Route::post('edit_note', 'NoteController@edit');
+
 });
