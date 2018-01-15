@@ -14,6 +14,8 @@ export default {
             ).then(response => {
                 this.user.authenticated = true
                 this.user.profile = response.data.data
+            }, error => {
+                this.signout()
             })
         }
     },
