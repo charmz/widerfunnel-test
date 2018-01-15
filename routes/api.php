@@ -23,6 +23,7 @@ Route::group(['middleware' => ['api','cors']], function () {
         ]);
     });
 
+    Route::get('notes', 'NoteController@index');
 	Route::post('create_note', 'NoteController@store');
 	Route::post('delete_note/{id}', 'NoteController@destroy');
 	Route::post('edit_note', 'NoteController@edit');

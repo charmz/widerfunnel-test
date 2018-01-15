@@ -28,6 +28,7 @@ export default {
         ).then(response => {
             context.success = true
         }, response => {
+            console.log('register bug after logout FIXME')
             context.response = response.data
             context.error = true
         })
@@ -50,6 +51,7 @@ export default {
             router.push({
                 name: 'dashboard'
             })
+
         }, response => {
             context.error = true
         })
@@ -60,7 +62,7 @@ export default {
         this.user.profile = null
 
         router.push({
-            name: 'home'
+            name: 'signin'
         })
     }	
 }

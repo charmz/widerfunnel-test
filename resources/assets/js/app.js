@@ -15,6 +15,7 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token
 Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token');
 
 Vue.http.options.root = process.env.HOST;
+window.Vue = Vue;
 
 export const router = new VueRouter({
     routes: [
