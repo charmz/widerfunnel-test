@@ -4,8 +4,11 @@
 			<nav>
 				<nav>
 					<ul class="list-inline">
-						<li>
+						<li v-if="!auth.user.authenticated">
 							<router-link :to="{ name: 'home' }">Home</router-link>
+						</li>
+						<li v-if="auth.user.authenticated">
+							<router-link :to="{ name: 'dashboard' }">Dashboard</router-link>
 						</li>
 						<li class="pull-right" v-if="!auth.user.authenticated">
 							<router-link :to="{ name: 'register' }">Register</router-link>

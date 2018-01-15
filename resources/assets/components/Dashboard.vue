@@ -10,12 +10,15 @@
 				    <a class="btn btn-default" @click="createNote()">
 					    Add note
 					</a>
+                    <p>
+                        * To edit, double click note text.
+                    </p>
 				<div class="tabs is-centered">
 				</div>
 				<div class="card" v-for="note in list">
 					<header class="card-header">
-						<p class="card-header-title">
-						Note {{ note.id }}
+						<p class="card-header-title text-left">
+						# {{ note.id }}
 						</p>
 					</header>
 					<div class="card-content">
@@ -26,7 +29,7 @@
 							<input class="input" v-if="note === editingNote" v-autofocus @keyup.enter="endEditing(note)" @blur="endEditing(note)" type="text" placeholder="New note" v-model="note.body">
 						</div>
 					</div>
-					<footer class="card-footer">
+					<footer class="card-footer text-right">
 						<a class="card-footer-item btn" v-on:click.prevent="deleteNote(note.id)">Delete</a>
 					</footer>
 				</div>
