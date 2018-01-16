@@ -1,6 +1,6 @@
 # Laravel on AWS
 
-A quick example to illustrate the use of Laravel and Vue.js
+A quick example to illustrate the use of Laravel and Vue.js. This application uses Laravel's baked-in authentication system with a Vue front end using JWTs to allow for a simple user based CRUD.
 
 
 ## Bash commands for Ubuntu 16.04
