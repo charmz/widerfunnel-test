@@ -1,6 +1,6 @@
-# wider_funnel_test
+# resources
 
-> A test 
+> A Vue.js project
 
 ## Build Setup
 

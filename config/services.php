@@ -19,6 +19,12 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+	'google' => [
+        'client_id' => env('GOOGLE_API_KEY'),
+        'client_secret' => env('GOOGLE_API_SECRET'),
+        'redirect' => env('GOOGLE_API_CALLBACK_URL'),
+    ],
+
     'ses' => [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
